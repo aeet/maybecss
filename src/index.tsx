@@ -2,9 +2,7 @@
 import { render } from 'solid-js/web';
 import { Router } from "@solidjs/router";
 import './index.css';
-import { routes } from './route';
-import { LayoutDefault } from './layout/default';
-import { TestPage } from './route/test';
+import { Routes } from './route';
 
 const root = document.getElementById('root');
 
@@ -15,4 +13,5 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 }
 
 
-render(() => <Router root={() => (<LayoutDefault><TestPage></TestPage></LayoutDefault>)} children={routes} />, root!);
+
+render(() => <Router> <Routes /> </Router>, root!);
