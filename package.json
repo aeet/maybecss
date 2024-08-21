@@ -17,9 +17,11 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.14.3",
+    "@vitejs/plugin-legacy": "^5.4.2",
     "less": "^4.2.0",
     "sass": "^1.77.8",
     "solid-js": "^1.8.11",
+    "solid-markdown": "^2.0.13",
     "vite-template-solid": "file:"
   }
 }
