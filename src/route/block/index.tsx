@@ -1,38 +1,54 @@
-import { Component } from "solid-js";
-import { SolidMarkdown } from "solid-markdown";
+import { Component, createEffect } from "solid-js";
 import "./index.scss"
+import MindElixir, { NodeObj } from 'mind-elixir'
+
+import { SolidMarkdown } from 'solid-markdown'
+import { buildTree } from "../../utils/mind-elixir";
+import { Arrow } from "mind-elixir/dist/types/arrow";
 
 export const BlockPage: Component<{}> = (props) => {
-  const markdown = `
-  - 块级元素 block-level element.
-  - 常见块级元素div,li,table 等.
-  - 块级元素和display 为 block 的元素”不是一个概念.
-    - li元 素默认的 display 值是 list-item.
-    - table元素默认的 display 值是 table.
-    - 但是它们均是块级元素.
-  - 特征 一个水平流上只能单独显示一个元素，多个块级元素则换行显示.
-`;
-  return <div>
+
+  const markdonw = ``;
+  let graph: HTMLElement
+
+  createEffect(() => {
+    let mind = new MindElixir({
+      el: graph,
+      draggable: true, 
+      contextMenu: true, 
+      toolBar: true, 
+      nodeMenu: true, 
+      keypress: true 
+    })
+
+
+    const data: NodeObj[] = [
+      { id: 'root', topic: 'Root' },
+      { id: 'sub1', topic: 'sub1', parent: { id: 'root' } as any },
+      { id: 'sub2', topic: 'sub2', parent: { id: 'root' } as any },
+    ]
+
+    const arrows: Arrow[] = []
+
+    mind.init({
+      nodeData: buildTree(data)!,
+      arrows: arrows
+    })
+  })
+
+  return (<div>
     <div>
-      <h1>markdown</h1>
-      <SolidMarkdown children={markdown} />
+      <h1>Docs</h1>
+      <SolidMarkdown children={markdonw}></SolidMarkdown>
     </div>
     <div>
-      <h1>demos</h1>
-      <hr />
-      <div>
-        <h2>clear</h2>
-        <div class="box clear">
-          <img src="https://picsum.photos/200/300" />
-        </div>
-        <div>123</div>
-        <h2>not clear</h2>
-        <div class="box">
-          <img src="https://picsum.photos/200/300" />
-        </div>
-        <div>123</div>
+      <h1>Graph</h1>
+      <div class="graph-box">
+        <div class="graph" ref={(el: HTMLElement) => { graph = el }}></div>
       </div>
     </div>
-    <hr />
-  </div>;
+    <div>
+      <h1>Example</h1>
+    </div>
+  </div>)
 }

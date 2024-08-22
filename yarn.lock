@@ -2159,6 +2159,11 @@ mime@^1.4.1:
   resolved "https://registry.npmjs.org/mime/-/mime-1.6.0.tgz"
   integrity sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
 
+mind-elixir@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.npmjs.org/mind-elixir/-/mind-elixir-4.0.5.tgz"
+  integrity sha512-zFYNabpchCY468d/vqo68hnhP+VDN47uPyJJ4dYlkqvL7fomRlo/WJinYgH+Rjt5vFJVLEMBtFsv5fizAC4ZYg==
+
 mri@^1.1.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/mri/-/mri-1.2.0.tgz"
@@ -2666,6 +2671,7 @@ vite-plugin-solid@^2.8.2:
   resolved "file:"
   dependencies:
     "@solidjs/router" "^0.14.3"
+    "@vitejs/plugin-legacy" "^5.4.2"
     less "^4.2.0"
     sass "^1.77.8"
     solid-js "^1.8.11"
