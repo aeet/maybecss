@@ -14,18 +14,18 @@ export const BlockPage: Component<{}> = (props) => {
   createEffect(() => {
     let mind = new MindElixir({
       el: graph,
-      draggable: true, 
-      contextMenu: true, 
-      toolBar: true, 
-      nodeMenu: true, 
-      keypress: true 
+      draggable: true,
+      contextMenu: true,
+      toolBar: true,
+      nodeMenu: true,
+      keypress: true
     })
 
 
-    const data: NodeObj[] = [
+    const data: any[] = [
       { id: 'root', topic: 'Root' },
-      { id: 'sub1', topic: 'sub1', parent: { id: 'root' } as any },
-      { id: 'sub2', topic: 'sub2', parent: { id: 'root' } as any },
+      { id: 'sub1', topic: 'sub1', parent: { id: 'root' } },
+      { id: 'sub2', topic: 'sub2', parent: { id: 'root' } },
     ]
 
     const arrows: Arrow[] = []
