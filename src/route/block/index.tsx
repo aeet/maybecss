@@ -1,54 +1,31 @@
-import { Component, createEffect } from "solid-js";
+import { Component } from "solid-js";
 import "./index.scss"
-import MindElixir, { NodeObj } from 'mind-elixir'
 
 import { SolidMarkdown } from 'solid-markdown'
-import { buildTree } from "../../utils/mind-elixir";
-import { Arrow } from "mind-elixir/dist/types/arrow";
+import MindGraph from "../../component/MindGraph";
 
 export const BlockPage: Component<{}> = (props) => {
 
   const markdonw = ``;
-  let graph: HTMLElement
-
-  createEffect(() => {
-    let mind = new MindElixir({
-      el: graph,
-      draggable: true,
-      contextMenu: true,
-      toolBar: true,
-      nodeMenu: true,
-      keypress: true
-    })
-
-
-    const data: any[] = [
-      { id: 'root', topic: 'Root' },
-      { id: 'sub1', topic: 'sub1', parent: { id: 'root' } },
-      { id: 'sub2', topic: 'sub2', parent: { id: 'root' } },
-    ]
-
-    const arrows: Arrow[] = []
-
-    mind.init({
-      nodeData: buildTree(data)!,
-      arrows: arrows
-    })
-  })
+  const data: any[] = [
+    { id: 'root', topic: 'root' },
+    { id: 'sub1', topic: 'sub1', parent: { id: 'root' } },
+    { id: 'sub2', topic: 'sub2', parent: { id: 'root' } },
+  ]
 
   return (<div>
     <div>
       <h1>Docs</h1>
       <SolidMarkdown children={markdonw}></SolidMarkdown>
     </div>
+    <MindGraph data={data}></MindGraph>
     <div>
-      <h1>Graph</h1>
-      <div class="graph-box">
-        <div class="graph" ref={(el: HTMLElement) => { graph = el }}></div>
-      </div>
-    </div>
-    <div>
-      <h1>Example</h1>
+      <BlockExample />
     </div>
   </div>)
+}
+
+
+const BlockExample: Component<{}> = (props) => {
+  return <div>123</div>
 }
